@@ -1,7 +1,7 @@
 # Moderne_Roboterkonzepte
 
 ## GUI
-Für das GUI selbst wird Chainlit verwendet Hiermeit bekommen wir eine schöne, Chat GBT ähnliche Chatoberfläche im Browser
+Für das GUI selbst wird Chainlit verwendet Hiermeit bekommen wir eine schöne, Chat GPT ähnliche Chatoberfläche im Browser
 - https://docs.chainlit.io/get-started/overview
 ### model_fetcher
 Der Model fetcher ruft die API von openrouter auf und extrahiert von dort alle verfügmaren modelle als .json  
