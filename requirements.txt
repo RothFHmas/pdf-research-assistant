@@ -1,0 +1,16 @@
+# Chainlit für das Webinterface
+chainlit>=1.1.0
+
+# OpenRouter / OpenAI API
+openai>=1.31.0
+requests>=2.31.0
+httpx>=0.26.0
+
+# LangChain für Memory und Chat-Chain
+langchain>=0.1.0
+
+# Tiktoken für Tokenisierung (optional, wenn LangChain LLM-Modelle nutzt)
+tiktoken>=0.4.0
+
+# Für asynchrone Features in Chainlit (falls Streaming genutzt wird)
+asyncio
