@@ -5,8 +5,8 @@ Für das GUI selbst wird Chainlit verwendet Hiermeit bekommen wir eine schöne, 
 - https://docs.chainlit.io/get-started/overview
 ### model_fetcher
 Der Model fetcher ruft die API von openrouter auf und extrahiert von dort alle verfügmaren modelle als .json  
-`response = requests.get(self.API_URL)`  
-`models = response.json().get("data", [])`  
+Zeile 37 `response = requests.get(self.API_URL)`  
+Zeile 41 `models = response.json().get("data", [])`  
 Diese json wir nun nach bestimmten parametern die die einzelnen modelle unterstüzen durchsucht.  
 
 Es wird einerseits nach dem priceing gefilterd (in unserem fall welche modelle gratis sind (diese funktionalität kann ausgeschaltet werden)), und nach allen support_parametern z.b. die unterstüzung von tools.  
