@@ -5,7 +5,7 @@ Für das GUI selbst wird Chainlit verwendet Hiermeit bekommen wir eine schöne, 
 - https://docs.chainlit.io/get-started/overview
 
 Zum Ausführen des Chatbots mit GUI zunächst die requirements aus `requirements.txt` installieren.   
-Anschließend bitte den API key mithilfe dieses befhels setzen `$env:OPENROUTER_API_KEY="<API_KEY>"`
+Anschließend bitte den API key mithilfe dieses befhels setzen `$env:OPENROUTER_API_KEY="<API_KEY>"`unter windows in Anaconda `set OPENROUTER_API_KEY=<API KEY>`
 
 Mit `chainlit run main.py -w` kann das programm nun ausgeführt werden.
 Es sollte sich nun ein browserfenster mti der chatbot oberfläche öffnen.
