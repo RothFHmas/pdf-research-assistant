@@ -2,10 +2,19 @@ import socket
 import subprocess
 import math
 import yaml
+from langchain_core.tools import tool
 
-def move_to_pose(pose_str: str)->str:
+@tool
+def move_to_pose(pose_str: str) -> str:
     """
-    sends a goal to the nav2 stack
+    Sends a navigation goal to the nav2 stack to move the robot to a specified pose.
+    
+    Args:
+        pose_str: A YAML string containing x, y, and theta values for the target pose.
+                  Example: "x: 1.0\ny: 2.0\ntheta: 1.57"
+    
+    Returns:
+        The constructed goal message in YAML format.
     """
 
     # parse the pose string
@@ -36,3 +45,7 @@ def move_to_pose(pose_str: str)->str:
 
     # Send the pose to the nav2 stack
     return goal
+
+
+# List of all available tools
+available_tools = [move_to_pose]
