@@ -2,7 +2,7 @@ services:
   nav2:
     build:
       context: .
-      dockerfile: Dockerfile.nav2
+      dockerfile: docker/Dockerfile.nav2
     image: nav2-jazzy-custom
     container_name: nav2-MRK
     
@@ -36,7 +36,7 @@ services:
   chatbot:
     build:
       context: .
-      dockerfile: Dockerfile.chatbot
+      dockerfile: docker/Dockerfile.chatbot
     image: chatbot-custom
     container_name: chatbot-MRK
     
@@ -70,7 +70,7 @@ services:
       - "8000:8000"
     
     # Auto-start chainlit on container start
-    command: /opt/venv/bin/chainlit run main.py -w
+    command: /opt/venv/bin/chainlit run src/main.py -w
 
 # Optional Docker secrets - uncomment to use secrets instead of env_file
 # Secrets are mounted as files at /run/secrets/<secret_name>

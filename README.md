@@ -17,7 +17,7 @@ echo "OPENROUTER_API_KEY=your-api-key-here" > .env
 ## Run the App
 
 ```bash
-chainlit run main.py -w
+chainlit run src/main.py -w
 ```
 
 Open http://localhost:8000 in your browser.
@@ -62,7 +62,7 @@ Then start the Chainlit server:
 
 ```bash
 source /opt/ros/jazzy/setup.bash
-chainlit run main.py -w
+chainlit run src/main.py -w
 ```
 
 Open http://localhost:8000 in your browser to interact with the chatbot.
