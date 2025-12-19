@@ -6,16 +6,27 @@ from chainlit.input_widget import Select
 from model_fetcher import ModelFetcher
 from chatbot import Chatbot
 
-# Load environment variables from .env file
+# Load environment variables from .env file (fallback for local development)
 load_dotenv()
 
 # ============================================================
 # Initialisierung
 # ============================================================
-api_key = os.getenv("OPENROUTER_API_KEY")
+# Try to read from Docker secret first (more secure), then fall back to env var
+secret_path = "/run/secrets/openrouter_api_key"
+if os.path.exists(secret_path):
+    with open(secret_path, 'r') as f:
+        api_key = f.read().strip()
+else:
+    # Fallback to environment variable (for local development or if secret not used)
+    api_key = os.getenv("OPENROUTER_API_KEY")
+
 if not api_key:
-    raise ValueError("Bitte setze vorher $env:OPENROUTER_API_KEY in deinem Terminal.")
-    # $env:OPENROUTER_API_KEY="<API_KEY>"
+    raise ValueError(
+        "OPENROUTER_API_KEY nicht gefunden!\n"
+        "Option 1 (Docker secret): Erstelle .env.secret mit: OPENROUTER_API_KEY=your_key\n"
+        "Option 2 (env var): Setze OPENROUTER_API_KEY als Umgebungsvariable"
+    )
 fetcher = ModelFetcher()
 
 # ============================================================

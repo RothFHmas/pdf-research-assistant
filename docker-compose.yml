@@ -2,7 +2,7 @@ services:
   nav2:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.nav2
     image: nav2-jazzy-custom
     container_name: nav2-MRK
     
@@ -32,3 +32,53 @@ services:
       
     # Privileged mode for hardware access if needed
     privileged: true
+
+  chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile.chatbot
+    image: chatbot-custom
+    container_name: chatbot-MRK
+    
+    # Interactive mode - automatically drops into container
+    stdin_open: true
+    tty: true
+    
+    # Use the same network as nav2 (host mode for ROS2 communication)
+    network_mode: host
+    
+    # Load environment variables from .env file (optional - won't fail if missing)
+    # Create .env file with: OPENROUTER_API_KEY=your_key_here
+    env_file:
+      - .env
+    
+    # Optional: Use Docker secrets for sensitive data (more secure)
+    # Uncomment below and create .env.secret file to use secrets instead
+    # secrets:
+    #   - openrouter_api_key
+    
+    # Environment variables (non-sensitive)
+    environment:
+      - ROS_DOMAIN_ID=0
+    
+    volumes:
+      # Mount the code directory for development
+      - .:/app
+    
+    # Expose chainlit port (default 8000)
+    ports:
+      - "8000:8000"
+    
+    # Auto-start chainlit on container start
+    command: /opt/venv/bin/chainlit run main.py -w
+
+# Optional Docker secrets - uncomment to use secrets instead of env_file
+# Secrets are mounted as files at /run/secrets/<secret_name>
+# Create the secret file: echo "your_api_key" > .env.secret
+# secrets:
+#   openrouter_api_key:
+#     file: .env.secret
+
+networks:
+  default:
+    name: ros-network
