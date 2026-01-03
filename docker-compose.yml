@@ -13,6 +13,9 @@ services:
     # Network host for RViz communication
     network_mode: host
     
+    # Share IPC namespace for DDS shared memory communication
+    ipc: host
+    
     # Load environment variables from .env file
     env_file:
       - .env
@@ -46,6 +49,9 @@ services:
     
     # Use the same network as nav2 (host mode for ROS2 communication)
     network_mode: host
+    
+    # Share IPC namespace for DDS shared memory communication
+    ipc: host
     
     # Load environment variables from .env file (optional - won't fail if missing)
     # Create .env file with: OPENROUTER_API_KEY=your_key_here
