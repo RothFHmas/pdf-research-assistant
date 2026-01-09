@@ -77,7 +77,7 @@ services:
       - "8000:8000"
     
     # Auto-start chainlit on container start (with ROS2 environment)
-    command: bash -c "source /opt/ros/jazzy/setup.bash && /opt/venv/bin/chainlit run src/main.py -w"
+    command: bash -c "source /opt/ros/jazzy/setup.bash && /opt/venv/bin/chainlit run src/main.py -w --host 0.0.0.0"
 
 # Optional Docker secrets - uncomment to use secrets instead of env_file
 # Secrets are mounted as files at /run/secrets/<secret_name>
