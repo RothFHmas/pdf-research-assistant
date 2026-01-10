@@ -15,10 +15,10 @@ class Chatbot:
             base_url="https://openrouter.ai/api/v1",
             api_key=api_key,
             model=model,
-        ).bind_tools(self.tools)
+        ).bind_tools(self.tools) # equal ?????
 
         # Load system prompt from file (required)
-        prompt_path = Path(__file__).parent / "system_prompt.txt"
+        prompt_path = Path(__file__).parent.parent / "config" / "system_prompt.txt"
         if not prompt_path.exists():
             raise FileNotFoundError(f"Required system prompt file not found: {prompt_path}")
         system_prompt = prompt_path.read_text(encoding="utf-8")

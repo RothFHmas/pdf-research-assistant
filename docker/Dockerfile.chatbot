@@ -1,0 +1,43 @@
+FROM ros:jazzy-ros-base
+
+# Install system dependencies if needed
+RUN apt-get update && apt-get install -y \
+    bash \
+    python3-venv \
+    ros-jazzy-nav2-msgs \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Create virtual environment in /opt/venv (won't be overwritten by volume mount)
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Upgrade pip first (separate layer for caching)
+RUN pip install --upgrade pip setuptools wheel
+
+# Copy only requirements.txt first (better layer caching)
+COPY requirements.txt .
+
+# Install Python dependencies with pip cache mount (MUCH faster rebuilds)
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -r requirements.txt
+
+# Copy application files last (changes most frequently)
+COPY src/ ./src/
+COPY config/ ./config/
+COPY .chainlit/ ./.chainlit/
+COPY public/ ./public/
+
+# Source ROS2 and virtual environment in bashrc and add useful aliases
+RUN echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc && \
+    echo "source /opt/venv/bin/activate" >> ~/.bashrc && \
+    echo "alias ll='ls -lah'" >> ~/.bashrc && \
+    echo "alias start-chatbot='chainlit run src/main.py'" >> ~/.bashrc
+
+# Set ROS_DOMAIN_ID to match nav2 container
+ENV ROS_DOMAIN_ID=0
+
+CMD ["/bin/bash"]
+

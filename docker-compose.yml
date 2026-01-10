@@ -2,7 +2,7 @@ services:
   nav2:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile.nav2
     image: nav2-jazzy-custom
     container_name: nav2-MRK
     
@@ -13,22 +13,79 @@ services:
     # Network host for RViz communication
     network_mode: host
     
+    # Share IPC namespace for DDS shared memory communication
+    ipc: host
+    
     # Load environment variables from .env file
     env_file:
       - .env
     
     # Display passthrough for GUI applications (RViz)
     environment:
-      - DISPLAY=${DISPLAY}
+      - DISPLAY=${DISPLAY:-:1}
       - QT_X11_NO_MITSHM=1
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=all
       - ROS_DOMAIN_ID=0
+      - ROS_LOCALHOST_ONLY=0
     
     volumes:
       # X11 display passthrough
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ${HOME}/.Xauthority:/root/.Xauthority:rw
       
     # Privileged mode for hardware access if needed
     privileged: true
+
+  chatbot:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.chatbot
+    image: chatbot-custom
+    container_name: chatbot-MRK
+    
+    # Interactive mode - automatically drops into container
+    stdin_open: true
+    tty: true
+    
+    # Use the same network as nav2 (host mode for ROS2 communication)
+    network_mode: host
+    
+    # Share IPC namespace for DDS shared memory communication
+    ipc: host
+    
+    # Load environment variables from .env file (optional - won't fail if missing)
+    # Create .env file with: OPENROUTER_API_KEY=your_key_here
+    env_file:
+      - .env
+    
+    # Optional: Use Docker secrets for sensitive data (more secure)
+    # Uncomment below and create .env.secret file to use secrets instead
+    # secrets:
+    #   - openrouter_api_key
+    
+    # Environment variables (non-sensitive)
+    environment:
+      - ROS_DOMAIN_ID=0
+      - ROS_LOCALHOST_ONLY=0
+    
+    volumes:
+      # Mount the code directory for development
+      - .:/app
+    
+    # Expose chainlit port (default 8000)
+    ports:
+      - "8000:8000"
+    
+    # Auto-start chainlit on container start (with ROS2 environment)
+    command: bash -c "source /opt/ros/jazzy/setup.bash && /opt/venv/bin/chainlit run src/main.py -w --host 0.0.0.0"
+
+# Optional Docker secrets - uncomment to use secrets instead of env_file
+# Secrets are mounted as files at /run/secrets/<secret_name>
+# Create the secret file: echo "your_api_key" > .env.secret
+# secrets:
+#   openrouter_api_key:
+#     file: .env.secret
+
+networks:
+  default:
+    name: ros-network
