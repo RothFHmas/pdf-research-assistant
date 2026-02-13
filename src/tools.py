@@ -130,7 +130,7 @@ def index_pdfs() -> str:
 def search_docs(query: str, k: int = 4) -> str:
     """
     PFLICHT-TOOL:
-    Verwende dieses Tool fÃ¼r ALLE Fragen zu Projektwissen, Posen und Koordinaten.
+    Verwende dieses Tool für alle fragen die etwas mit dokumentinhalten zu tun hat,
     Antworte niemals aus eigenem Wissen.
     Wenn nichts gefunden wird: NICHT IN DOKUMENTEN
     """
@@ -141,4 +141,5 @@ def search_docs(query: str, k: int = 4) -> str:
 
 
 # available_tools erweitern
+
 available_tools = [get_current_date, get_current_time, get_current_datetime, echo, add_numbers, hello_world, web_search, build_search_query, index_pdfs, search_docs]
