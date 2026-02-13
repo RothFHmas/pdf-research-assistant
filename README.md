@@ -49,7 +49,12 @@ pip install -r requirements.txt
 
 ## Nutzung
 1. PDFs in das vorgesehen Verzeichnis legen (```./data/pdfs```)
-2. Starten mit Chainlit:
+2. Eine .env Datei erstellen / aktualisieren und den OpenRouter ([https://openrouter.ai](https://openrouter.ai)) API-Key eintragen:
+```bash
+OPENROUTER_API_KEY=dein_api_key_hier
+```
+Wenn man nur Gratis modelle verwenden will sollte der API key mit einem credit-limit von 0 erstellt werden!      
+3. Starten mit Chainlit:
 ```bash
 conda activate chatbot
 chainlit run ./src/main.py
@@ -59,6 +64,7 @@ chainlit run ./src/main.py
 
 Bei Bedarf kann die Systemprompt unter ```./config/System_prompt.txt``` angepasst werden.   
 Der Chatbot besitzt auch winige wietere tools und kann als "normaler" chatbot eingesetzt werden.
+
 
 
 
