@@ -37,7 +37,7 @@ Ziel ist es, Forschenden und Studierenden die Arbeit mit wissenschaftlicher Lite
    ```
 2. Anaconda‑Environment erstellen und aktevieren (falls noch nicht vorhanden):
 ```bash
-conda create -n chatbot python=3.10
+conda create chatbot python=3.11
 conda activate chatbot
 ```
 3. Abhängigkeiten installieren:
@@ -65,6 +65,7 @@ chainlit run ./src/main.py
 Als Beispiel ist in ```./data/pdfs``` das paper zu [Open3D](https://arxiv.org/abs/1801.09847).   
 Bei Bedarf kann die Systemprompt unter ```./config/System_prompt.txt``` angepasst werden.   
 Der Chatbot besitzt auch winige wietere tools und kann als "normaler" chatbot eingesetzt werden.
+
 
 
 
