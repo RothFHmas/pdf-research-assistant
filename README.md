@@ -2,7 +2,7 @@
 
 Ein Research‑Chatbot, der wissenschaftliche PDFs automatisch durchsucht, relevante Inhalte extrahiert und beim Literaturstudium unterstützt.
 
-> 🧠 *Dieses Projekt ist eine Abwandlung des an der FH‑Technikum Wien im Rahmen des Kurses „Moderne Roboterkonzepte“ durchgeführten Projekts meiner Gruppe. ([github.com/DavidSeyserGit/Moderne_Roboterkonzepte](https://github.com/DavidSeyserGit/Moderne_Roboterkonzepte))*  
+> 🧠 *Dieses Projekt ist eine Abwandlung des an der FH‑Technikum Wien im Rahmen des Kurses „Moderne Roboterkonzepte“ durchgeführten Projekts meiner Gruppe. ([Projekt Moderne Roboterkonzepte](https://github.com/DavidSeyserGit/Moderne_Roboterkonzepte))*  
 
 ---
 
@@ -62,8 +62,10 @@ chainlit run ./src/main.py
 3. Chainlit öffnet das Interface im Browser (normalerweise unter ```http://localhost:8000```)
 4. Fragen zu den Dokumenten im Chat‑Interface stellen
 
+Als Beispiel ist in ```./data/pdfs``` das paper zu [Open3D](https://arxiv.org/abs/1801.09847).   
 Bei Bedarf kann die Systemprompt unter ```./config/System_prompt.txt``` angepasst werden.   
 Der Chatbot besitzt auch winige wietere tools und kann als "normaler" chatbot eingesetzt werden.
+
 
 
 
