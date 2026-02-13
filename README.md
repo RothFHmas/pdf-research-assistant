@@ -61,10 +61,17 @@ chainlit run ./src/main.py
 ```
 3. Chainlit öffnet das Interface im Browser (normalerweise unter ```http://localhost:8000```)
 4. Fragen zu den Dokumenten im Chat‑Interface stellen
+   
+Falls die Ergebnisse nicht zufriedenstellend sind, empfiehlt es sich, im Optionsmenü ⚙️ das verwendete LLM-Modell zu ändern.
 
+   
 Als Beispiel ist in ```./data/pdfs``` das paper zu [Open3D](https://arxiv.org/abs/1801.09847).   
+
 Bei Bedarf kann die Systemprompt unter ```./config/System_prompt.txt``` angepasst werden.   
-Der Chatbot besitzt auch winige wietere tools und kann als "normaler" chatbot eingesetzt werden.
+
+Der Chatbot besitzt auch winige wietere tools und kann als "normaler" chatbot eingesetzt werden.   
+
+
 
 
 
