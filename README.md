@@ -76,6 +76,22 @@ python launcher.py
 3. Chainlit öffnet das Interface im Browser (normalerweise unter ```http://localhost:8000```)
 4. Fragen zu den Dokumenten im Chat‑Interface stellen
 
+### Nach erstmaligem Probieren
+
+Die Datei `Start_Chatbot.bat` ist eine Batch-Datei, die in der Windows-CMD das Conda-Environment `chatbot` aktiviert und anschließend die `launcher.py` startet.  
+
+Sie wurde erstellt, um den alltäglichen Gebrauch zu vereinfachen, sodass der Chatbot bequem ohne direkte Interaktion mit der Konsole gestartet werden kann.
+
+### Starten per Verknüpfung (Windows)
+
+Um den Chatbot besonders bequem zu starten, kann eine **Verknüpfung** zu der Batch-Datei `Start_Chatbot.bat` erstellt werden:
+
+1. Navigiere zu dem Ordner, in dem `Start_Chatbot.bat` liegt.
+2. Rechtsklick auf die Datei → **Senden an → Desktop (Verknüpfung erstellen)**  
+   Oder: Rechtsklick → **Verknüpfung erstellen** und die Verknüpfung an gewünschter Stelle ablegen.
+
+Ab jetzt reicht ein **Doppelklick auf die Verknüpfung**, um das Conda-Environment `chatbot` zu aktivieren und den Launcher zu starten – **ohne manuelles Öffnen der CMD**.
+
 ## Zusatz-Infos
 Falls die Ergebnisse nicht zufriedenstellend sind, empfiehlt es sich, im Optionsmenü ⚙️ das verwendete LLM-Modell zu ändern.
 
@@ -85,6 +101,7 @@ Als Beispiel ist in ```./data/pdfs``` das paper zu [Open3D](https://arxiv.org/ab
 Bei Bedarf kann die Systemprompt unter ```./config/System_prompt.txt``` angepasst werden.   
 
 Der Chatbot besitzt auch winige wietere tools und kann als "normaler" chatbot eingesetzt werden.   
+
 
 
 
