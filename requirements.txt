@@ -4,10 +4,10 @@ langchain_openai==1.1.6
 langchain_community
 langchain_text_splitters
 langchain_huggingface
-python-dotenv==1.2.1
-PyYAML==6.0.2
-Requests==2.32.5
-numpy
 chromadb
 pypdf
 sentence-transformers
+python-dotenv==1.2.1
+numpy
+ddgs
+
