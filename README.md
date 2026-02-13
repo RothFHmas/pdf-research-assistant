@@ -49,7 +49,7 @@ pip install -r requirements.txt
 
 ## Nutzung
 1. PDFs in das vorgesehen Verzeichnis legen (```./data/pdfs```)
-2. Erstelle eine Datei namens `.env` **im Hauptverzeichnis (root) des Projekts** und trage darin deinen OpenRouter API-Key ein:  
+2. Erstelle eine Datei namens `.env` **im Hauptverzeichnis (root) des Projekts** und trage darin deinen [OpenRouter](https://openrouter.ai/settings/keys) API-Key ein:  
 ```text
 OPENROUTER_API_KEY=dein_api_key_hier
 ```
@@ -65,6 +65,7 @@ chainlit run ./src/main.py
 Als Beispiel ist in ```./data/pdfs``` das paper zu [Open3D](https://arxiv.org/abs/1801.09847).   
 Bei Bedarf kann die Systemprompt unter ```./config/System_prompt.txt``` angepasst werden.   
 Der Chatbot besitzt auch winige wietere tools und kann als "normaler" chatbot eingesetzt werden.
+
 
 
 
