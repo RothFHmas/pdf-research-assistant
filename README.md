@@ -31,15 +31,15 @@ Ziel ist es, Forschenden und Studierenden die Arbeit mit wissenschaftlicher Lite
 ## Installation
 
 1. Repository klonen:
-   ```bash
-   git clone https://github.com/RothFHmas/pdf-research-assistant.git
-   cd pdf-research-assistant
-   ```
+```bash
+git clone https://github.com/RothFHmas/pdf-research-assistant.git
+cd pdf-research-assistant
+```
 2. Anaconda‑Environment erstellen und aktevieren (falls noch nicht vorhanden):
 ```bash
 conda create chatbot python=3.11
 conda activate chatbot
-```
+ ```
 3. Abhängigkeiten installieren:
 ```bash
 pip install -r requirements.txt
@@ -55,13 +55,28 @@ OPENROUTER_API_KEY=dein_api_key_hier
 ```
 Wenn man nur Gratis modelle verwenden will sollte der API key mit einem credit-limit von 0 erstellt werden!      
 3. Starten mit Chainlit:
+### Option A: Direkt über die Konsole (klassisch)
 ```bash
 conda activate chatbot
 chainlit run ./src/main.py
 ```
+### Option B: Über den Launcher (empfohlenes, schöneres Interface)
+
+Alternativ kann der Chatbot auch über das grafische Launcher-Fenster gestartet werden.
+Dieses bietet ein komfortableres Interface zum:
+- Eintragen und Speichern des OpenRouter API-Keys
+- Öffnen des PDF-Ordners zum Hinzufügen neuer Dokumente
+- Starten/Beenden des Chatbots
+- Anzeigen der Konsolen-Ausgabe
+Start des Launchers:
+```bash
+conda activate chatbot
+python launcher.py
+```
 3. Chainlit öffnet das Interface im Browser (normalerweise unter ```http://localhost:8000```)
 4. Fragen zu den Dokumenten im Chat‑Interface stellen
-   
+
+## Zusatz-Infos
 Falls die Ergebnisse nicht zufriedenstellend sind, empfiehlt es sich, im Optionsmenü ⚙️ das verwendete LLM-Modell zu ändern.
 
    
@@ -70,6 +85,7 @@ Als Beispiel ist in ```./data/pdfs``` das paper zu [Open3D](https://arxiv.org/ab
 Bei Bedarf kann die Systemprompt unter ```./config/System_prompt.txt``` angepasst werden.   
 
 Der Chatbot besitzt auch winige wietere tools und kann als "normaler" chatbot eingesetzt werden.   
+
 
 
 
